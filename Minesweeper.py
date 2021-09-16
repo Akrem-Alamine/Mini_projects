@@ -147,16 +147,16 @@ def play(user):
     surface_3d=[[[] for y in range(l)] for x in range(l)]
     for x in range(l):
         for y in range(l):   
-            if surface[x][y][0]=='empty':
-                surface_3d[x][y]='■'
-            else:
-                surface_3d[x][y]='B'
+            surface_3d[x][y]='■'
     while not game_over:
         while True:
             show_3d(surface_3d)
             print("choose an x and y to flip:");
-            x=ord(input("enter x:"))-ord('a')
-            y=ord(input("enter y:"))-ord('a')
+            while True:
+                x=ord(input("enter x:"))-ord('a')
+                y=ord(input("enter y:"))-ord('a')
+                if (0<=x<=l-1) and (0<=y<=l-1):
+                    break
             if  verif_coord(x,y,l):
                 if surface[x][y][0]=='bomb':
                     end_game(x,y)
